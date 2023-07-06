@@ -1,5 +1,7 @@
 defmodule ApiBankWeb.WelcomeController do
-  @moduledoc false
+  @moduledoc """
+  This module is responsible for the welcome controller.
+  """
 
   use ApiBankWeb, :controller
 
