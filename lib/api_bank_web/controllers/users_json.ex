@@ -5,6 +5,8 @@ defmodule ApiBankWeb.UsersJSON do
 
   alias ApiBank.Users.User
 
+  def show(%{user: user}), do: %{data: data(user)}
+
   def create(%{user: user}) do
     %{
       message: "User created successfully",
@@ -20,4 +22,5 @@ defmodule ApiBankWeb.UsersJSON do
       cep: user.cep
     }
   end
+
 end
