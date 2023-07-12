@@ -47,6 +47,9 @@
       <excludeFolder url="file://$MODULE_DIR$/deps" />
       <excludeFolder url="file://$MODULE_DIR$/doc" />
       <excludeFolder url="file://$MODULE_DIR$/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/bunt" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/credo" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/file_system" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -116,5 +119,8 @@
     <orderEntry type="library" name="argon2_elixir" level="project" />
     <orderEntry type="library" name="comeonin" level="project" />
     <orderEntry type="library" name="elixir_make" level="project" />
+    <orderEntry type="library" name="file_system" level="project" />
+    <orderEntry type="library" name="bunt" level="project" />
+    <orderEntry type="library" name="inch_ex" level="project" />
   </component>
 </module>

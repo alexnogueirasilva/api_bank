@@ -4,24 +4,16 @@ defmodule ApiBankWeb.UsersController do
   """
 
   use ApiBankWeb, :controller
-  alias ApiBank.Users.Action.Create
+  alias ApiBank.Users
+  alias Users.User
+
+  action_fallback ApiBankWeb.FallbackController
 
   def create(conn, params) do
-    params
-    |> Create.call()
-    |> handle_response(conn)
+    with {:ok, %User{} = user} <- Users.create(params) do
+      conn
+      |> put_status(:created)
+      |> render(:create, user: user)
+    end
   end
-
-  defp handle_response({:ok, user}, conn) do
-    conn
-    |> put_status(:created)
-    |> render(:create, user: user)
-  end
-#
-#  defp handle_response({:error, _changeset} = error, conn) do
-#    conn
-#    |> put_status(:unprocessable_entity)
-#    |> json("error.json", error: error)
-#  end
-  
 end
