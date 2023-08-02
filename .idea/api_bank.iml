@@ -109,18 +109,18 @@
     <orderEntry type="library" name="bandit" level="project" />
     <orderEntry type="library" name="credo" level="project" />
     <orderEntry type="library" name="html_entities" level="project" />
-    <orderEntry type="module-library">
-      <library name="Elixir 1.15.2-otp-26">
-        <CLASSES />
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="argon2_elixir" level="project" />
     <orderEntry type="library" name="comeonin" level="project" />
     <orderEntry type="library" name="elixir_make" level="project" />
     <orderEntry type="library" name="file_system" level="project" />
     <orderEntry type="library" name="bunt" level="project" />
     <orderEntry type="library" name="inch_ex" level="project" />
+    <orderEntry type="module-library">
+      <library name="Elixir 1.15.4-otp-26">
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
