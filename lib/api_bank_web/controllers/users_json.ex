@@ -29,5 +29,4 @@ defmodule ApiBankWeb.UsersJSON do
       cep: user.cep
     }
   end
-
 end
