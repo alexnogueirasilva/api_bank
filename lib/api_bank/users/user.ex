@@ -22,14 +22,27 @@ defmodule ApiBank.Users.User do
   This function is responsible for the changeset of the user model.
   """
 
-  def changeset(user \\ %__MODULE__{}, attrs) do
+  def changeset(user \\ %__MODULE__{}, attrs)
+  def changeset(%__MODULE__{} = user, attrs) do
     user
     |> cast(attrs, @required_fields)
-    |> validate_required(@required_fields)
+    |> do_validations(@required_fields)
+    |> add_password_hash()
+  end
+
+  def changeset(user, attrs) do
+    user
+    |> cast(attrs, @required_fields)
+    |> do_validations(@required_fields)
+    |> add_password_hash()
+  end
+
+  defp do_validations(changeset, fields) do
+    changeset
+    |> validate_required(fields)
     |> validate_length(:name, min: 3, max: 40)
     |> validate_length(:cep, is: 8)
     |> validate_format(:email, ~r/@/)
-    |> add_password_hash()
   end
   
   defp add_password_hash(
@@ -39,5 +52,4 @@ defmodule ApiBank.Users.User do
   end
 
   defp add_password_hash(changeset), do: changeset
-  
 end
