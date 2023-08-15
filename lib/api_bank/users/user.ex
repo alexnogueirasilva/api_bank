@@ -3,7 +3,8 @@ defmodule ApiBank.Users.User do
   This module is responsible for the user model.
   """
 
-  @required_fields [:name, :email, :password, :cpf, :cep]
+  @required_fields_create [:name, :email, :password, :cpf, :cep]
+  @required_fields_update [:name, :email, :cpf, :cep]
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -21,22 +22,26 @@ defmodule ApiBank.Users.User do
   @doc"""
   This function is responsible for the changeset of the user model.
   """
-
-  def changeset(user \\ %__MODULE__{}, attrs)
-  def changeset(%__MODULE__{} = user, attrs) do
-    user
-    |> cast(attrs, @required_fields)
-    |> do_validations(@required_fields)
+  def changeset(attrs) do
+    %__MODULE__{}
+    |> cast(attrs, @required_fields_create)
+    |> do_validations(@required_fields_create)
     |> add_password_hash()
   end
 
+  @doc """
+  This function is responsible for the validations of the user model.
+  """
   def changeset(user, attrs) do
     user
-    |> cast(attrs, @required_fields)
-    |> do_validations(@required_fields)
+    |> cast(attrs, @required_fields_update)
+    |> do_validations(@required_fields_update)
     |> add_password_hash()
   end
 
+  @doc """
+  This function is responsible for the validations of the user model.
+  """
   defp do_validations(changeset, fields) do
     changeset
     |> validate_required(fields)

@@ -14,6 +14,13 @@ defmodule ApiBankWeb.UsersJSON do
     }
   end
 
+  def delete(%{user: user}) do
+    %{
+      message: "User deleted successfully",
+      data: data(user)
+    }
+  end
+
   def update(%{user: user}) do
     %{
       message: "User updated successfully",
