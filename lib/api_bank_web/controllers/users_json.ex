@@ -30,6 +30,7 @@ defmodule ApiBankWeb.UsersJSON do
 
   defp data(%User{} = user) do
     %{
+      id: user.id,
       name: user.name,
       email: user.email,
       cpf: user.cpf,

@@ -2,6 +2,7 @@ defmodule ApiBankWeb.UsersControllerTest do
   use ApiBankWeb.ConnCase
 
   alias UsersController
+  alias ApiBank.Users
 
   @moduletag :capture_log
 
@@ -24,13 +25,19 @@ defmodule ApiBankWeb.UsersControllerTest do
           "name" => "John Doe",
           "email" => "alex@devaction.com.br",
           "cpf" => "12345678901",
-          "cep" => "12345678"
+          "cep" => "12345678",
+          "id" => response["data"]["id"]
            },
         "message" => "User created successfully"
       }
 
       assert %{"data" => %{
-                    "cep" => "12345678", "cpf" => "12345678901", "email" => "alex@devaction.com.br", "name" => "John Doe"},
+                    "cep" => "12345678",
+                    "cpf" => "12345678901",
+                    "email" => "alex@devaction.com.br",
+                    "name" => "John Doe",
+                    "id" => _id
+             },
                     "message" => "User created successfully"
              } = response
       end
@@ -56,5 +63,34 @@ defmodule ApiBankWeb.UsersControllerTest do
           }
       }
       end
+  end
+
+  describe "delete/2" do
+    test "when the user is deleted successfully", %{conn: conn} do
+      params = %{
+        "name" => "John Doe",
+        "email" => "alex@devaction.com.br",
+        "cpf" => "12345678901",
+        "cep" => "12345678",
+        "password" => "12345678"
+      }
+      {:ok, user} = Users.create(params)
+
+      response =
+        conn
+        |> delete(~p"/api/users/#{user.id}")
+        |> json_response(:ok)
+
+        expected_response = %{"data" => %{
+          "cep" => "12345678",
+          "cpf" => "12345678901",
+          "email" => "alex@devaction.com.br",
+          "name" => "John Doe", "id" => user.id
+        },
+          "message" => "User deleted successfully"
+        }
+
+        assert response == expected_response
+    end
   end
 end
