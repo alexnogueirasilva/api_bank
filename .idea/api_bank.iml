@@ -83,6 +83,7 @@
       <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/telemetry_poller" />
       <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/websock" />
       <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/websock_adapter" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/tesla" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -162,5 +163,18 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="tesla" level="project" />
+    <orderEntry type="library" name="ibrowse" level="project" />
+    <orderEntry type="library" name="gun" level="project" />
+    <orderEntry type="library" name="finch" level="project" />
+    <orderEntry type="library" name="poison" level="project" />
+    <orderEntry type="library" name="exjsx" level="project" />
+    <orderEntry type="library" name="msgpax" level="project" />
+    <orderEntry type="library" name="fuse" level="project" />
+    <orderEntry type="library" name="opentelemetry_process_propagator" level="project" />
+    <orderEntry type="library" name="mix_test_watch" level="project" />
+    <orderEntry type="library" name="httparrot" level="project" />
+    <orderEntry type="library" name="cowlib" level="project" />
+    <orderEntry type="library" name="ranch" level="project" />
   </component>
 </module>
