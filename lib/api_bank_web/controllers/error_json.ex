@@ -16,7 +16,13 @@ defmodule ApiBankWeb.ErrorJSON do
   def error(%{status: :not_found}) do
     %{
       status: :not_found,
-      message: "User Not Found"
+      message: "Resource Not Found"
+    }
+  end
+
+  def error(%{status: status}) do
+    %{
+      status: status,
     }
   end
 
