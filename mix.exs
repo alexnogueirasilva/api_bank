@@ -45,6 +45,7 @@ defmodule ApiBank.MixProject do
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:tesla, "~> 1.4"},
       {:bypass, "~> 2.1", only: :test},
+      {:mox, "~> 1.0", only: :test},
     ]
   end
 

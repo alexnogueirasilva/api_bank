@@ -1,10 +1,14 @@
 defmodule ApiBankWeb.UsersControllerTest do
   use ApiBankWeb.ConnCase
 
+  import Mox
+
   alias UsersController
   alias ApiBank.Users
+  alias ApiBank.ViaCep.ClientMock
 
   @moduletag :capture_log
+  setup :verify_on_exit!
 
   describe "create/2" do
     test "when the user is created successfully", %{conn: conn} do
@@ -15,6 +19,19 @@ defmodule ApiBankWeb.UsersControllerTest do
         "cep" => "12345678",
         "password" => "12345678"
       }
+
+      body = %{
+        "name" => "John Doe",
+        "email" => "alex@devaction.com.br",
+        "cpf" => "12345678901",
+        "cep" => "12345678",
+        "password" => "12345678"
+      }
+      
+      expect(ClientMock, :call, fn "12345678" ->
+        {:ok, body}
+      end)
+      
       response =
         conn
         |> post(~p"/api/users", user_params)
@@ -42,7 +59,7 @@ defmodule ApiBankWeb.UsersControllerTest do
              } = response
       end
 
-      test "when the user is not created successfully", %{conn: conn} do
+    test "when the user is not created successfully", %{conn: conn} do
         user_params = %{
           "name" => "John Doe",
           "email" => "",
@@ -50,6 +67,11 @@ defmodule ApiBankWeb.UsersControllerTest do
           "cep" => "12345678",
           "password" => ""
         }
+
+        expect(ClientMock, :call, fn "12345678" ->
+          {:ok, ""}
+        end)
+
         response =
           conn
           |> post(~p"/api/users", user_params)
@@ -74,6 +96,19 @@ defmodule ApiBankWeb.UsersControllerTest do
         "cep" => "12345678",
         "password" => "12345678"
       }
+
+      body = %{
+        "name" => "John Doe",
+        "email" => "alex@devaction.com.br",
+        "cpf" => "12345678901",
+        "cep" => "12345678",
+        "password" => "12345678"
+      }
+
+      expect(ClientMock, :call, fn "12345678" ->
+        {:ok, body}
+      end)
+
       {:ok, user} = Users.create(params)
 
       response =

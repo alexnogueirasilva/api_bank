@@ -4,9 +4,14 @@ defmodule ApiBank.ViaCep.Client do
   """
   use Tesla
 
+  alias ApiBank.ViaCep.ClientBehaviour
+
   @base_url "https://viacep.com.br/ws"
   plug Tesla.Middleware.JSON
 
+  @behaviour ClientBehaviour
+
+  @impl ClientBehaviour
   def call(url \\ @base_url, cep) do
     "#{url}/#{cep}/json"
     

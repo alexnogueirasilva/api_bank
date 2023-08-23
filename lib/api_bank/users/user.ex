@@ -39,9 +39,6 @@ defmodule ApiBank.Users.User do
     |> add_password_hash()
   end
 
-  @doc """
-  This function is responsible for the validations of the user model.
-  """
   defp do_validations(changeset, fields) do
     changeset
     |> validate_required(fields)
