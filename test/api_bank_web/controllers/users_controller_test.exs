@@ -91,28 +91,13 @@ defmodule ApiBankWeb.UsersControllerTest do
   end
 
   describe "delete/2" do
-    test "when the user is deleted successfully", %{conn: conn} do
-      params = %{
-        "name" => "John Doe",
-        "email" => "alex@devaction.com.br",
-        "cpf" => "12345678901",
-        "cep" => "12345678",
-        "password" => "12345678"
-      }
-
-      body = %{
-        "name" => "John Doe",
-        "email" => "alex@devaction.com.br",
-        "cpf" => "12345678901",
-        "cep" => "12345678",
-        "password" => "12345678"
-      }
+    test "when the user is deleted successfully", %{conn: conn, body: body, params: user_params} do
 
       expect(ClientMock, :call, fn "12345678" ->
         {:ok, body}
       end)
 
-      {:ok, user} = Users.create(params)
+      {:ok, user} = Users.create(user_params)
 
       response =
         conn
