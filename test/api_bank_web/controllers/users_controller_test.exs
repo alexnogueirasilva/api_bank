@@ -8,25 +8,28 @@ defmodule ApiBankWeb.UsersControllerTest do
   alias ApiBank.ViaCep.ClientMock
 
   @moduletag :capture_log
-  setup :verify_on_exit!
+  setup do
+    params = %{
+      "name" => "John Doe",
+      "email" => "alex@devaction.com.br",
+      "cpf" => "12345678901",
+      "cep" => "12345678",
+      "password" => "12345678"
+    }
+
+    body = %{
+      "name" => "John Doe",
+      "email" => "alex@devaction.com.br",
+      "cpf" => "12345678901",
+      "cep" => "12345678",
+      "password" => "12345678"
+    }
+
+    {:ok, %{params: params, body: body}}
+  end
 
   describe "create/2" do
-    test "when the user is created successfully", %{conn: conn} do
-      user_params = %{
-        "name" => "John Doe",
-        "email" => "alex@devaction.com.br",
-        "cpf" => "12345678901",
-        "cep" => "12345678",
-        "password" => "12345678"
-      }
-
-      body = %{
-        "name" => "John Doe",
-        "email" => "alex@devaction.com.br",
-        "cpf" => "12345678901",
-        "cep" => "12345678",
-        "password" => "12345678"
-      }
+    test "when the user is created successfully", %{conn: conn, body: body, params: user_params} do
       
       expect(ClientMock, :call, fn "12345678" ->
         {:ok, body}
