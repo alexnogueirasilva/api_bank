@@ -2,6 +2,7 @@ defmodule ApiBank.Users.User do
   @moduledoc """
   This module is responsible for the user model.
   """
+  alias ApiBank.Accounts.Account
 
   @required_fields_create [:name, :email, :password, :cpf, :cep]
   @required_fields_update [:name, :email, :cpf, :cep]
@@ -15,6 +16,7 @@ defmodule ApiBank.Users.User do
     field :password_hash, :string
     field :cpf, :string
     field :cep, :string
+    has_one :account, Account
 
     timestamps()
   end
