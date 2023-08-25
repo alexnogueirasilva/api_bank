@@ -3,20 +3,23 @@ defmodule ApiBank.Accounts.Account do
   The account schema.
   """
   use Ecto.Schema
-  use ApiBank.Accounts.User
   import Ecto.Changeset
+
+  alias ApiBank.Users.User
 
   @required_fields [:balance, :user_id]
 
   schema "accounts" do
     field :balance, :decimal, default: 0
     belongs_to :user, User
+
+    timestamps()
   end
 
   def changeset(account \\ %__MODULE__{}, attrs) do
     account
     |> cast(attrs, @required_fields)
     |> validate_required(@required_fields)
-    |> validate_number(:balance, :balance_must_be_positive)
+    |> check_constraint(:balance, name: :balance_must_be_positive)
   end
 end

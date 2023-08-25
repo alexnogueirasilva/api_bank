@@ -10,6 +10,7 @@ defmodule ApiBankWeb.Router do
 
     get "/", WelcomeController, :index
     resources "/users", UsersController, except: [:new, :edit]
+    post "/accounts", Account.AccountsController, :create
   end
 
   # Enable LiveDashboard in development
