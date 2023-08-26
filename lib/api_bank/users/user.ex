@@ -47,6 +47,8 @@ defmodule ApiBank.Users.User do
     |> validate_length(:name, min: 3, max: 40)
     |> validate_length(:cep, is: 8)
     |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email, name: :unique_users_email)
+    |> unique_constraint(:cpf, name: :unique_users_cpf)
   end
   
   defp add_password_hash(

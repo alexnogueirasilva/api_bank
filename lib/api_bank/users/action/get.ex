@@ -6,8 +6,8 @@ defmodule ApiBank.Users.Action.Get do
   alias ApiBank.Users.User
   alias ApiBank.Repo
 
-  def call(id) do
-    case Repo.get(User, id) do
+  def call(email) do
+    case Repo.get_by(User, email: email) do
       nil -> {:error, :not_found}
       user -> {:ok, user}
     end

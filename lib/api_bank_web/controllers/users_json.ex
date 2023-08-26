@@ -21,6 +21,16 @@ defmodule ApiBankWeb.UsersJSON do
     }
   end
 
+  def login(%{token: token}) do
+    %{
+      message: "User logged in successfully",
+      data: %{
+        type: "bearer",
+        token: token
+      }
+    }
+  end
+
   def update(%{user: user}) do
     %{
       message: "User updated successfully",

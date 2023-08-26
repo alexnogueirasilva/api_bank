@@ -7,6 +7,8 @@ defmodule ApiBankWeb.UsersController do
   alias ApiBank.Users
   alias Users.User
 
+  alias ApiBankWeb.Authentication.Token
+
   action_fallback ApiBankWeb.FallbackController
 
   def create(conn, params) do
@@ -22,6 +24,15 @@ defmodule ApiBankWeb.UsersController do
       conn
       |> put_status(:ok)
       |> render(:delete, user: user)
+    end
+  end
+
+  def login(conn, params) do
+    with {:ok, %User{} = user} <- Users.login(params) do
+      token = Token.sing(user)
+      conn
+      |> put_status(:ok)
+      |> render(:login, token: token)
     end
   end
 

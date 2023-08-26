@@ -10,6 +10,8 @@ defmodule ApiBankWeb.Router do
 
     get "/", WelcomeController, :index
     resources "/users", UsersController, except: [:new, :edit]
+    post "/users/login", UsersController, :login
+
     post "/accounts", Account.AccountsController, :create
     post "/accounts/transaction", Account.AccountsController, :transaction
   end
