@@ -21,5 +21,6 @@ defmodule ApiBank.Accounts.Account do
     |> cast(attrs, @required_fields)
     |> validate_required(@required_fields)
     |> check_constraint(:balance, name: :balance_must_be_positive)
+    |> unique_constraint(:user_id, name: :unique_accounts_user_id)
   end
 end

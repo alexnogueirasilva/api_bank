@@ -46,6 +46,7 @@ defmodule ApiBank.MixProject do
       {:tesla, "~> 1.4"},
       {:bypass, "~> 2.1", only: :test},
       {:mox, "~> 1.0", only: :test},
+      {:decimal, "~> 2.0"},
     ]
   end
 

@@ -1,4 +1,4 @@
-defmodule ApiBank.Action.Accounts.Create do
+defmodule ApiBank.Accounts.Action.Create do
   @moduledoc """
   This module is responsible for the create action.
   """

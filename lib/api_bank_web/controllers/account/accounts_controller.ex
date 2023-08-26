@@ -16,4 +16,12 @@ defmodule ApiBankWeb.Account.AccountsController do
       |> render(:create, account: account)
       end
     end
+
+    def transaction(conn, params) do
+      with {:ok, transaction} <- Accounts.transaction(params) do
+        conn
+        |> put_status(:ok)
+        |> render(:transaction, transaction: transaction)
+      end
+    end
 end
