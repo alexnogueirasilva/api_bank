@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for apibank on 2023-08-26T14:03:41-03:00
+# fly.toml app configuration file generated for bankiapi on 2023-08-26T14:22:00-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "apibank"
+app = "bankiapi"
 primary_region = "gru"
 kill_signal = "SIGTERM"
 swap_size_mb = 512
@@ -14,7 +14,7 @@ swap_size_mb = 512
   release_command = "/app/bin/migrate"
 
 [env]
-  PHX_HOST = "apibank.fly.dev"
+  PHX_HOST = "bankiapi.fly.dev"
   PORT = "8080"
 
 [http_service]

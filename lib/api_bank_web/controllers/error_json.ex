@@ -21,15 +21,11 @@ defmodule ApiBankWeb.ErrorJSON do
   end
 
   def error(%{status: status}) do
-    %{
-      status: status,
-    }
+    %{status: status}
   end
 
   def error(%{msg: msg}) do
-    %{
-      message: msg,
-    }
+    %{message: msg}
   end
 
   def error(%{changeset: changeset}) do
