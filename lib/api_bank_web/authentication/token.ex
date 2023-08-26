@@ -11,10 +11,5 @@ defmodule ApiBankWeb.Authentication.Token do
     Token.sign(Endpoint, @sing_salt, %{user_id: user.id})
   end
   
-  def verify(token) do
-    case Token.verify(Endpoint, @sing_salt, token) do
-      {:ok, data} = result -> result
-      {:error, _} = error -> error
-    end
-  end
+  def verify(token), do: Token.verify(Endpoint, @sing_salt, token)
 end

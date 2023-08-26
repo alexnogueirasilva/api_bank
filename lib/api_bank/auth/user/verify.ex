@@ -3,7 +3,6 @@ defmodule ApiBank.Auth.User.Verify do
   This module is responsible for verifying the user's credentials.
   """
   alias ApiBank.Users
-  alias Users.User
 
   def call(%{"email" => email, "password" => password}) do
     case Users.get(email) do
